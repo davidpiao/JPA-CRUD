@@ -1,6 +1,5 @@
 package com.crud.backend.controller;
 
-import com.crud.backend.dto.UserMajorDTO;
 import com.crud.backend.exception.ResourceNotFoundException;
 import com.crud.backend.model.User;
 import com.crud.backend.repository.UserRepository;
@@ -29,15 +28,10 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    //major 포함하여 불러오기
-    @GetMapping("/users-major")
-    public List<UserMajorDTO> getAllUserMajor(){
-        return userService.getAllUsersMajor();
-    }
 
     //유저 생성 api
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public User createUser(@RequestBody  User user) {
         return userRepository.save(user);
     }
 
@@ -74,6 +68,5 @@ public class UserController {
         userRepository.delete(user);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
     }
 }
